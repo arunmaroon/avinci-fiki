@@ -18,12 +18,12 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, {
     cors: {
-        origin: process.env.FRONTEND_URL || 'http://localhost:9000',
+        origin: process.env.FRONTEND_URL || 'http://localhost:3000',
         methods: ['GET', 'POST']
     }
 });
 
-const PORT = process.env.PORT || 9001;
+const PORT = process.env.PORT || 3001;
 
 if (!fs.existsSync('uploads')) {
     fs.mkdirSync('uploads');
