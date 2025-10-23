@@ -1,6 +1,6 @@
 {
   "name": "sirius-backend",
-  "version": "2.02",
+  "version": "0.1.0",
   "description": "Sirius AI Agent Portal Backend",
   "main": "server.js",
   "scripts": {

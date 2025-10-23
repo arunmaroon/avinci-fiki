@@ -1,6 +1,6 @@
 {
   "name": "sirius",
-  "version": "2.02",
+  "version": "0.1.0",
   "description": "Sirius AI Agent Portal - Complete development environment",
   "scripts": {
     "setup": "./setup.sh",
