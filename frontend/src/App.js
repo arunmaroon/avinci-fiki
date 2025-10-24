@@ -22,6 +22,7 @@ import DesignImport from './pages/DesignImport';
 import FigmaCallback from './components/FigmaCallback';
 import MoneyviewCallback from './components/MoneyviewCallback';
 import LoginPage from './pages/LoginPage';
+import MessageBeautifierDemo from './components/MessageBeautifierDemo';
 import useAuthStore from './stores/authStore';
 import usePermissions from './hooks/usePermissions';
 import modernTheme from './theme/modernTheme';
@@ -81,6 +82,7 @@ function App() {
               <Route path="/audio-call" element={<AudioCall />} />
               <Route path="/socket-test" element={<SocketTest />} />
               <Route path="/test-route" element={<TestRoute />} />
+              <Route path="/message-demo" element={<MessageBeautifierDemo />} />
               <Route path="/agent-chat/:agentId" element={<AgentChatPage />} />
               <Route path="/enhanced-chat/:agentId" element={<EnhancedChatPage />} />
               

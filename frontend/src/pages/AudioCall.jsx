@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Device } from '@twilio/voice-sdk';
 import { io } from 'socket.io-client';
 import toast from 'react-hot-toast';
+import MessageBeautifier from '../components/MessageBeautifier';
 import { 
     FaMicrophoneSlash as MicOff, 
     FaMicrophone as Mic, 
@@ -207,16 +208,21 @@ const AudioCall = () => {
                 throw new Error('Invalid response from server');
             }
 
-            const { callId: newCallId, token: newToken, roomName: newRoom } = response.data;
+            const { callId: newCallId, roomName: newRoom, audioEnabled, method } = response.data;
             
-            // Validate required fields
-            if (!newCallId || !newToken || !newRoom) {
-                console.error('Missing required fields:', { newCallId, newToken, newRoom });
+            // Validate required fields (token is optional for WebRTC)
+            if (!newCallId || !newRoom) {
+                console.error('Missing required fields:', { newCallId, newRoom });
                 throw new Error('Invalid call data received from server');
             }
             
+            // Check if audio is enabled
+            if (!audioEnabled) {
+                throw new Error('Audio calling is not available. Please check your configuration.');
+            }
+            
             setCallId(newCallId);
-            setToken(newToken);
+            setToken(null); // No token needed for WebRTC
             setRoomName(newRoom);
 
             // Set state to connected so user can start speaking
@@ -291,7 +297,7 @@ const AudioCall = () => {
                 }]);
 
                 // Send transcript to backend with UI context if available
-                const response = await axios.post('http://localhost:9000/api/call/process-speech', {
+                const response = await axios.post('/api/call/process-speech', {
                     callId,
                     type,
                     transcript: speechTranscript,
@@ -340,7 +346,7 @@ const AudioCall = () => {
 
                 // Send to backend for processing with UI context if available
                 console.log('🚀 Making request to /api/call/process-speech');
-                const response = await axios.post('http://localhost:9000/api/call/process-speech', {
+                const response = await axios.post('/api/call/process-speech', {
                     audio: base64Audio,
                     callId,
                     type,
@@ -452,6 +458,51 @@ const AudioCall = () => {
         }
     }, [audioQueue, isPlayingAudio]);
 
+    // Browser TTS fallback function
+    const playBrowserTTS = (text, agentName) => {
+        console.log('🎤 Using browser TTS for:', agentName);
+        
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Select a voice based on agent gender
+            const voices = speechSynthesis.getVoices();
+            const isFemale = agentName.includes('Elena') || agentName.includes('Sarah') || agentName.includes('Maria');
+            const selectedVoice = voices.find(voice => 
+                voice.lang.startsWith('en') && 
+                (isFemale ? voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('woman') : 
+                           voice.name.toLowerCase().includes('male') || voice.name.toLowerCase().includes('man'))
+            ) || voices.find(voice => voice.lang.startsWith('en')) || voices[0];
+            
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+                console.log('🎤 Using voice:', selectedVoice.name);
+            }
+            
+            utterance.rate = 0.9;
+            utterance.pitch = 1.0;
+            utterance.volume = 0.8;
+            
+            utterance.onend = () => {
+                console.log('🎤 Browser TTS finished for:', agentName);
+                setIsPlayingAudio(false);
+                setAudioQueue(prev => prev.slice(1));
+            };
+            
+            utterance.onerror = (error) => {
+                console.error('❌ Browser TTS error:', error);
+                setIsPlayingAudio(false);
+                setAudioQueue(prev => prev.slice(1));
+            };
+            
+            speechSynthesis.speak(utterance);
+        } else {
+            console.warn('⚠️ Speech synthesis not supported');
+            setIsPlayingAudio(false);
+            setAudioQueue(prev => prev.slice(1));
+        }
+    };
+
     const playQueuedAudio = (audioData) => {
         const { audioUrl, responseText, agentName, region } = audioData;
         setIsPlayingAudio(true);
@@ -462,7 +513,7 @@ const AudioCall = () => {
         // Play audio if available; fallback to natural Indian voice TTS if not
         if (audioUrl) {
             console.log('Playing audio:', audioUrl);
-            const audio = new Audio(`http://localhost:9000${audioUrl}`);
+            const audio = new Audio(`${audioUrl}`);
             
             audio.onended = () => {
                 console.log('🎵 Audio finished for:', agentName);
@@ -479,22 +530,18 @@ const AudioCall = () => {
             
             audio.onerror = () => {
                 console.error('❌ Audio error for:', agentName);
-                toast.error(`Failed to play ElevenLabs audio for ${agentName}.`);
-                setIsPlayingAudio(false);
-                setAudioQueue(prev => prev.slice(1)); // Remove first item from queue
+                console.log('🔄 Falling back to browser TTS for:', agentName);
+                playBrowserTTS(responseText, agentName);
             };
             
             audio.play().catch(err => {
                 console.error('❌ Error playing audio:', err);
-                toast.error(`Playback error for ${agentName}'s ElevenLabs audio.`);
-                setIsPlayingAudio(false);
-                setAudioQueue(prev => prev.slice(1)); // Remove first item from queue
+                console.log('🔄 Falling back to browser TTS for:', agentName);
+                playBrowserTTS(responseText, agentName);
             });
         } else {
-            console.error('❌ Missing ElevenLabs audio; skipping playback for agent response.', { agentName, region });
-            toast.error(`Audio for ${agentName} is unavailable. Please check ElevenLabs configuration.`);
-            setIsPlayingAudio(false);
-            setAudioQueue(prev => prev.slice(1)); // Remove first item from queue
+            console.log('⚠️ No ElevenLabs audio, using browser TTS for:', agentName);
+            playBrowserTTS(responseText, agentName);
         }
     };
 
@@ -505,8 +552,8 @@ const AudioCall = () => {
         const region = data.region || 'north';
 
         if (!audioUrl) {
-            console.error('❌ Expected ElevenLabs audio but none provided.', { agentName, safeTimestamp });
-            toast.error(`Missing ElevenLabs audio for ${agentName}.`);
+            console.log('⚠️ No ElevenLabs audio provided, using browser TTS for:', agentName);
+            playBrowserTTS(responseText, agentName);
         } else {
             console.log('🎵 playAgentAudio received audio stream:', { audioUrl, agentName });
         }
@@ -551,7 +598,7 @@ const AudioCall = () => {
     const endCall = async () => {
         try {
             if (callId) {
-                await axios.post(`http://localhost:9000/api/call/${callId}/end`).catch(error => {
+                await axios.post(`/api/call/${callId}/end`).catch(error => {
                     console.error('❌ Error calling end call API:', error);
                 });
             }
@@ -712,7 +759,7 @@ const AudioCall = () => {
             formData.append('agentId', agentIds[0] || 'group'); // Use first agent ID or 'group'
             formData.append('callId', callId); // Pass callId to store image path
 
-            const response = await axios.post('http://localhost:9000/api/ai/upload-ui', formData, {
+            const response = await axios.post('/api/ai/upload-ui', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
 
@@ -796,7 +843,7 @@ const AudioCall = () => {
 
         try {
             console.log('🔌 Initializing Socket.IO...');
-            socketRef.current = io('http://localhost:9000');
+            socketRef.current = io();
             
             socketRef.current.on('connect', () => {
                 console.log('🔌 Socket connected');
@@ -879,9 +926,9 @@ const AudioCall = () => {
         console.log('  - Real-time communication: Socket.IO');
         
         // Set call state to connected immediately since we don't need Twilio
-        if (token && callState === 'connecting') {
+        if (callId && callState === 'connecting') {
             setCallState('connected');
-            console.log('✅ Audio calling ready (without Twilio device)');
+            console.log('✅ Audio calling ready (WebRTC-based)');
         }
 
         return () => {
@@ -899,7 +946,7 @@ const AudioCall = () => {
                 console.error('❌ Error cleaning up Twilio device:', error);
             }
         };
-    }, [token, callState]);
+    }, [callId, callState]);
 
     // Call duration timer
     useEffect(() => {
@@ -1053,36 +1100,20 @@ const AudioCall = () => {
                                 </div>
                             ) : (
                                 transcript.map((entry, index) => (
-                                    <div key={index} className="flex flex-col space-y-1">
-                                        <div className="flex items-center space-x-2">
-                                            <span className={`font-medium text-sm ${
-                                                entry.type === 'user' ? 'text-blue-600' : 'text-gray-700'
-                                            }`}>
-                                                {entry.type === 'user' ? 'You' : entry.speaker}
-                                            </span>
-                                            <span className="text-xs text-gray-400">
-                                                {new Date(entry.timestamp).toLocaleTimeString()}
-                                            </span>
-                                        </div>
-                                        <div className={`text-sm ${
-                                            entry.type === 'user' ? 'text-gray-900' : 'text-gray-700'
-                                        }`}>
-                                            {entry.text}
-                                        </div>
-                                        {entry.imagePath && (
-                                            <div className="mt-2">
-                                                <img
-                                                    src={`http://localhost:9000${entry.imagePath}`}
-                                                    alt="Uploaded reference"
-                                                    className="rounded-lg max-w-xs border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                                                    onError={(e) => {
-                                                        console.error('Failed to load image:', entry.imagePath);
-                                                        e.target.style.display = 'none';
-                                                    }}
-                                                />
-                                            </div>
-                                        )}
-                                    </div>
+                                    <MessageBeautifier
+                                        key={index}
+                                        message={{
+                                            content: entry.text,
+                                            agentName: entry.type === 'user' ? 'You' : entry.speaker,
+                                            timestamp: entry.timestamp,
+                                            image: entry.imagePath,
+                                            audioUrl: entry.audioUrl
+                                        }}
+                                        type={entry.type === 'user' ? 'user' : 'call'}
+                                        showAvatar={entry.type !== 'user'}
+                                        showTimestamp={true}
+                                        compact={true}
+                                    />
                                 ))
                             )}
                         </div>

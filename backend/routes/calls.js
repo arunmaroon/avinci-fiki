@@ -391,17 +391,22 @@ function initializeAudioServices() {
         console.log('❌ ElevenLabs client not initialized - no API key');
     }
     
-    // Check if all required services are available
+    // Check if essential services are available (Twilio is optional for WebRTC)
     const missingServices = [];
-    if (!twilioClient) missingServices.push('Twilio');
     if (!deepgramClient) missingServices.push('Deepgram');
     if (!elevenlabsClient) missingServices.push('ElevenLabs');
     
     if (missingServices.length > 0) {
-        console.warn(`⚠️  Audio services not configured. Missing: ${missingServices.join(', ')}. Audio calling will be disabled.`);
-        console.warn(`   To enable audio calling, see: AUDIO_CALLING_QUICKSTART.md`);
-        return false; // Return false instead of throwing error
+        console.warn(`⚠️  Essential audio services not configured. Missing: ${missingServices.join(', ')}. Audio calling will be disabled.`);
+        console.warn(`   To enable audio calling, configure Deepgram and ElevenLabs API keys.`);
+        return false;
     }
+    
+    // Twilio is optional for WebRTC-based calling
+    if (!twilioClient) {
+        console.log('ℹ️  Twilio not configured - using WebRTC for audio calling');
+    }
+    
     return true;
 }
 
@@ -516,11 +521,13 @@ router.get('/test-debug', (req, res) => {
     res.json({ message: 'Debug route working!' });
 });
 
-// Create a new User Interview call session with Twilio token
+// Create a new User Interview call session (WebRTC-based, no Twilio required)
 // Body: { agentIds: UUID[], topic: string, type: 'group' | '1on1', region?: string }
 router.post('/create', async (req, res) => {
     try {
-        // Initialize audio services
+        console.log('🔍 DEBUG: Call route hit - POST /create');
+        
+        // Initialize audio services (ElevenLabs and Deepgram only)
         const audioServicesAvailable = initializeAudioServices();
         
         const { agentIds = [], topic = '', type = 'group', region = 'north' } = req.body || {};
@@ -528,12 +535,19 @@ router.post('/create', async (req, res) => {
             return res.status(400).json({ error: 'agentIds (non-empty array) is required' });
         }
 
-        // If audio services not available, return error with helpful message
-        if (!audioServicesAvailable) {
+        // Check if we have at least ElevenLabs and Deepgram (Twilio is optional for WebRTC)
+        const hasElevenLabs = !!process.env.ELEVENLABS_API_KEY;
+        const hasDeepgram = !!process.env.DEEPGRAM_API_KEY;
+        
+        if (!hasElevenLabs || !hasDeepgram) {
             return res.status(400).json({ 
                 error: 'Audio calling not available',
-                message: 'Audio services (Twilio, Deepgram, ElevenLabs) are not configured. Please see AUDIO_CALLING_QUICKSTART.md for setup instructions.',
-                audioEnabled: false
+                message: 'ElevenLabs and Deepgram API keys are required for audio calling.',
+                audioEnabled: false,
+                missing: {
+                    elevenlabs: !hasElevenLabs,
+                    deepgram: !hasDeepgram
+                }
             });
         }
 
@@ -546,31 +560,21 @@ router.post('/create', async (req, res) => {
         const callId = result.rows[0].id;
         const roomName = `call-${callId}`;
 
-        // Generate Twilio access token for voice calling
-        const AccessToken = twilio.jwt.AccessToken;
-        const VoiceGrant = AccessToken.VoiceGrant;
-
-        const token = new AccessToken(
-            process.env.TWILIO_ACCOUNT_SID,
-            process.env.TWILIO_API_KEY,
-            process.env.TWILIO_API_SECRET,
-            { identity: `user-${uuidv4()}` }
-        );
-
-        const voiceGrant = new VoiceGrant({
-            outgoingApplicationSid: process.env.TWILIO_TWIML_APP_SID,
-            incomingAllow: true
-        });
-
-        token.addGrant(voiceGrant);
-
+        // For WebRTC-based calling, we don't need Twilio tokens
+        // Return call information for Socket.IO connection
         res.json({ 
             callId, 
-            token: token.toJwt(), 
             roomName,
             type,
             region,
-            created_at: result.rows[0].created_at 
+            created_at: result.rows[0].created_at,
+            audioEnabled: true,
+            method: 'webrtc', // Indicate this is WebRTC-based
+            services: {
+                elevenlabs: hasElevenLabs,
+                deepgram: hasDeepgram,
+                twilio: false
+            }
         });
     } catch (error) {
         console.error('Create call error:', error);

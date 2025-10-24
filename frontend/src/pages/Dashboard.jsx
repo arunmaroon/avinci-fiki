@@ -8,7 +8,21 @@ import {
     ArrowTrendingUpIcon,
     ClockIcon,
     HeartIcon,
-    SparklesIcon
+    SparklesIcon,
+    CogIcon,
+    CloudArrowUpIcon,
+    DocumentTextIcon,
+    MicrophoneIcon,
+    EyeIcon,
+    ShieldCheckIcon,
+    BeakerIcon,
+    AcademicCapIcon,
+    PhotoIcon,
+    LinkIcon,
+    ChartPieIcon,
+    UserCircleIcon,
+    PuzzlePieceIcon,
+    RocketLaunchIcon
 } from '@heroicons/react/24/outline';
 import api from '../utils/api';
 
@@ -305,6 +319,201 @@ const Dashboard = () => {
                         <p className="text-gray-600">Start chatting with agents to see analytics here.</p>
                     </div>
                 )}
+
+                {/* Feature Showcase Section */}
+                <div className="mt-16">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">🚀 Complete Feature Suite</h2>
+                        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                            Access all the powerful features you've built - from AI agent management to design system integration
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                        {/* AI Agent System */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200"
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="p-3 bg-blue-500 rounded-lg">
+                                    <UserGroupIcon className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 ml-3">🤖 AI Agent System</h3>
+                            </div>
+                            <p className="text-gray-600 mb-4">Comprehensive persona generation and agent management</p>
+                            <div className="space-y-2">
+                                <Link to="/agents" className="flex items-center p-2 hover:bg-blue-100 rounded-lg transition-colors">
+                                    <UserGroupIcon className="w-4 h-4 text-blue-600 mr-3" />
+                                    <span className="text-sm font-medium">Agent Library</span>
+                                </Link>
+                                <Link to="/group-chat" className="flex items-center p-2 hover:bg-blue-100 rounded-lg transition-colors">
+                                    <ChatBubbleLeftRightIcon className="w-4 h-4 text-blue-600 mr-3" />
+                                    <span className="text-sm font-medium">Multi-Agent Chat</span>
+                                </Link>
+                                <Link to="/agents" className="flex items-center p-2 hover:bg-blue-100 rounded-lg transition-colors">
+                                    <UserCircleIcon className="w-4 h-4 text-blue-600 mr-3" />
+                                    <span className="text-sm font-medium">Persona Generation</span>
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Design & Prototyping */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-6 border border-purple-200"
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="p-3 bg-purple-500 rounded-lg">
+                                    <CloudArrowUpIcon className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 ml-3">🎨 Design & Prototyping</h3>
+                            </div>
+                            <p className="text-gray-600 mb-4">Complete POTHOS design system integration</p>
+                            <div className="space-y-2">
+                                <Link to="/admin/design-import" className="flex items-center p-2 hover:bg-purple-100 rounded-lg transition-colors">
+                                    <CloudArrowUpIcon className="w-4 h-4 text-purple-600 mr-3" />
+                                    <span className="text-sm font-medium">Figma Integration</span>
+                                </Link>
+                                <Link to="/design-feedback" className="flex items-center p-2 hover:bg-purple-100 rounded-lg transition-colors">
+                                    <EyeIcon className="w-4 h-4 text-purple-600 mr-3" />
+                                    <span className="text-sm font-medium">Design Feedback</span>
+                                </Link>
+                                <Link to="/admin/design-import" className="flex items-center p-2 hover:bg-purple-100 rounded-lg transition-colors">
+                                    <PuzzlePieceIcon className="w-4 h-4 text-purple-600 mr-3" />
+                                    <span className="text-sm font-medium">POTHOS Components</span>
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Communication & Research */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 border border-green-200"
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="p-3 bg-green-500 rounded-lg">
+                                    <MicrophoneIcon className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 ml-3">💬 Communication</h3>
+                            </div>
+                            <p className="text-gray-600 mb-4">Advanced chat and user research capabilities</p>
+                            <div className="space-y-2">
+                                <Link to="/group-chat" className="flex items-center p-2 hover:bg-green-100 rounded-lg transition-colors">
+                                    <ChatBubbleLeftRightIcon className="w-4 h-4 text-green-600 mr-3" />
+                                    <span className="text-sm font-medium">Group Chat</span>
+                                </Link>
+                                <Link to="/audio-call" className="flex items-center p-2 hover:bg-green-100 rounded-lg transition-colors">
+                                    <MicrophoneIcon className="w-4 h-4 text-green-600 mr-3" />
+                                    <span className="text-sm font-medium">Audio Calling</span>
+                                </Link>
+                                <Link to="/user-research" className="flex items-center p-2 hover:bg-green-100 rounded-lg transition-colors">
+                                    <AcademicCapIcon className="w-4 h-4 text-green-600 mr-3" />
+                                    <span className="text-sm font-medium">User Research</span>
+                                </Link>
+                                <Link to="/message-demo" className="flex items-center p-2 hover:bg-green-100 rounded-lg transition-colors">
+                                    <DocumentTextIcon className="w-4 h-4 text-green-600 mr-3" />
+                                    <span className="text-sm font-medium">Message Beautifier Demo</span>
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Analytics & Data */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-gradient-to-br from-orange-50 to-red-100 rounded-xl p-6 border border-orange-200"
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="p-3 bg-orange-500 rounded-lg">
+                                    <ChartPieIcon className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 ml-3">📊 Analytics & Data</h3>
+                            </div>
+                            <p className="text-gray-600 mb-4">Comprehensive data processing and insights</p>
+                            <div className="space-y-2">
+                                <Link to="/" className="flex items-center p-2 hover:bg-orange-100 rounded-lg transition-colors">
+                                    <ChartPieIcon className="w-4 h-4 text-orange-600 mr-3" />
+                                    <span className="text-sm font-medium">Analytics Dashboard</span>
+                                </Link>
+                                <Link to="/user-research" className="flex items-center p-2 hover:bg-orange-100 rounded-lg transition-colors">
+                                    <DocumentTextIcon className="w-4 h-4 text-orange-600 mr-3" />
+                                    <span className="text-sm font-medium">Transcript Processing</span>
+                                </Link>
+                                <Link to="/agents" className="flex items-center p-2 hover:bg-orange-100 rounded-lg transition-colors">
+                                    <BeakerIcon className="w-4 h-4 text-orange-600 mr-3" />
+                                    <span className="text-sm font-medium">Vector Search</span>
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Administration */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}
+                            className="bg-gradient-to-br from-gray-50 to-slate-100 rounded-xl p-6 border border-gray-200"
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="p-3 bg-gray-500 rounded-lg">
+                                    <ShieldCheckIcon className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 ml-3">🔧 Administration</h3>
+                            </div>
+                            <p className="text-gray-600 mb-4">Complete admin and system management</p>
+                            <div className="space-y-2">
+                                <Link to="/admin" className="flex items-center p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                    <ShieldCheckIcon className="w-4 h-4 text-gray-600 mr-3" />
+                                    <span className="text-sm font-medium">Admin Dashboard</span>
+                                </Link>
+                                <Link to="/admin/roles" className="flex items-center p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                    <UserGroupIcon className="w-4 h-4 text-gray-600 mr-3" />
+                                    <span className="text-sm font-medium">User Management</span>
+                                </Link>
+                                <Link to="/admin" className="flex items-center p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                    <PuzzlePieceIcon className="w-4 h-4 text-gray-600 mr-3" />
+                                    <span className="text-sm font-medium">Product Management</span>
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Advanced Features */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                            className="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-xl p-6 border border-yellow-200"
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="p-3 bg-yellow-500 rounded-lg">
+                                    <RocketLaunchIcon className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 ml-3">🚀 Advanced Features</h3>
+                            </div>
+                            <p className="text-gray-600 mb-4">Cutting-edge AI and integration capabilities</p>
+                            <div className="space-y-2">
+                                <Link to="/agents" className="flex items-center p-2 hover:bg-yellow-100 rounded-lg transition-colors">
+                                    <EyeIcon className="w-4 h-4 text-yellow-600 mr-3" />
+                                    <span className="text-sm font-medium">GPT-4o Vision</span>
+                                </Link>
+                                <Link to="/admin" className="flex items-center p-2 hover:bg-yellow-100 rounded-lg transition-colors">
+                                    <LinkIcon className="w-4 h-4 text-yellow-600 mr-3" />
+                                    <span className="text-sm font-medium">MoneyView Integration</span>
+                                </Link>
+                                <Link to="/agents" className="flex items-center p-2 hover:bg-yellow-100 rounded-lg transition-colors">
+                                    <PhotoIcon className="w-4 h-4 text-yellow-600 mr-3" />
+                                    <span className="text-sm font-medium">Image Services</span>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </div>
     );

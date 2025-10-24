@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button, Card } from '../design-system';
 import useChatStore from '../stores/chatStore';
 import { toast } from 'react-hot-toast';
+import MessageBeautifier from './MessageBeautifier';
 import { 
     PaperAirplaneIcon, 
     PhotoIcon, 
@@ -115,47 +116,14 @@ const EnhancedChat = ({ agentId, agentName }) => {
 
 
     const formatMessage = (msg) => {
-        if (msg.role === 'user') {
-            return (
-                <div className="flex justify-end mb-4">
-                    <div className="bg-blue-500 text-white rounded-full px-6 py-3 max-w-xs lg:max-w-md">
-                        <p className="text-sm">{msg.content}</p>
-                        {msg.ui_path && (
-                            <p className="text-xs opacity-75 mt-1">📎 UI attached</p>
-                        )}
-                    </div>
-                </div>
-            );
-        } else if (msg.role === 'agent') {
-            return (
-                <div className="flex justify-start mb-4">
-                    <div className="bg-gray-100 text-gray-900 rounded-lg px-6 py-3 max-w-xs lg:max-w-md">
-                        <p className="text-sm">{msg.content}</p>
-                        {msg.ui_path && (
-                            <p className="text-xs text-gray-500 mt-1">📎 Referencing UI</p>
-                        )}
-                    </div>
-                </div>
-            );
-        } else if (msg.role === 'system') {
-            return (
-                <div className="flex justify-center mb-4">
-                    <div className="bg-yellow-100 text-yellow-800 rounded-lg px-4 py-2 text-sm">
-                        <p>{msg.content}</p>
-                    </div>
-                </div>
-            );
-        } else if (msg.role === 'error') {
-            return (
-                <div className="flex justify-center mb-4">
-                    <div className="bg-red-100 text-red-800 rounded-lg px-4 py-2 text-sm flex items-center">
-                        <ExclamationTriangleIcon className="h-4 w-4 mr-2" />
-                        <p>{msg.content}</p>
-                    </div>
-                </div>
-            );
-        }
-        return null;
+        return (
+            <MessageBeautifier 
+                message={msg}
+                type={msg.role}
+                showAvatar={msg.role !== 'user'}
+                showTimestamp={true}
+            />
+        );
     };
 
     return (

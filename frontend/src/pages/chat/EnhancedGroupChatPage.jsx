@@ -6,6 +6,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
+import MessageBeautifier from '../../components/MessageBeautifier';
 import { 
     MagnifyingGlassIcon,
     PlusIcon,
@@ -698,40 +699,18 @@ const EnhancedGroupChatPage = () => {
                         {/* Messages Area */}
                         <div className="flex-1 overflow-y-auto p-4 space-y-4">
                             {messages.map((msg) => (
-                                <div
+                                <MessageBeautifier
                                     key={msg.id}
-                                    className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'} ${
-                                        msg.isSystem ? 'justify-center' : ''
-                                    }`}
-                                >
-                                    {msg.isSystem ? (
-                                        <div className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">
-                                            {msg.text}
-                                        </div>
-                                    ) : (
-                                        <div className={`flex gap-3 max-w-xs lg:max-w-md ${msg.isUser ? 'flex-row-reverse' : ''}`}>
-                                            {!msg.isUser && (
-                                                <img
-                                                    src={msg.avatar || selectedConversation.avatar}
-                                                    alt={msg.sender}
-                                                    className="w-8 h-8 rounded-full flex-shrink-0"
-                                                />
-                                            )}
-                                            <div className={`px-4 py-2 rounded-2xl ${
-                                                msg.isUser 
-                                                    ? 'bg-primary-500 text-white' 
-                                                    : 'bg-white border border-gray-200 text-gray-900'
-                                            }`}>
-                                                <p className="text-sm">{msg.text}</p>
-                                                <p className={`text-xs mt-1 ${
-                                                    msg.isUser ? 'text-primary-100' : 'text-gray-500'
-                                                }`}>
-                                                    {msg.timestamp}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
+                                    message={{
+                                        content: msg.text,
+                                        agentName: msg.isUser ? 'You' : msg.sender,
+                                        timestamp: msg.timestamp,
+                                        avatar: msg.avatar || selectedConversation.avatar
+                                    }}
+                                    type={msg.isSystem ? 'system' : msg.isUser ? 'user' : 'agent'}
+                                    showAvatar={!msg.isUser && !msg.isSystem}
+                                    showTimestamp={true}
+                                />
                             ))}
                             {loading && (
                                 <div className="flex justify-start">
