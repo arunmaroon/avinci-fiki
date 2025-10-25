@@ -1,0 +1,19 @@
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Noticebar } from "./noticebar";
+import { iconTypes } from "./constants";
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Noticebar title="Title" message="Description" iconType={iconTypes.ERROR} />
+</ThemeProvider>
+```
+
+### Render noticebar
+
+```js live
+<ThemeProvider>
+  <Noticebar title="Title" message="Description" iconType={iconTypes.SUCCESS} />
+</ThemeProvider>
+```

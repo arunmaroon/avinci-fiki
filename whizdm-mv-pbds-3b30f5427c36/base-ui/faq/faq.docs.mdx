@@ -1,0 +1,55 @@
+---
+description: A Faq component.
+---
+
+import { Faq } from "./faq";
+import { Box, Typography } from "@mui/material";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Box sx={{ width: 312 }}>
+    <Faq
+      label={"Q. Who is eligible to apply for a loan on the Money View app?"}
+      id={"faq"}
+      expanded={false}
+      onExpansion={(e, expand) => {
+        setExpanded(expand);
+      }}>
+      <Typography style={{ margin: 0 }}>
+        A. You can get an instant loan on Money View without any paperwork by following these steps: Complete and submit your loan
+        application on the app. Once you've submitted your loan application, we'll go throught your documents and assess your
+        creditworthiness along with the other important details on your application. Post the verification process, we’ll send you a NACH
+        form, which you're required to print, sing on, scan, and send back to us. This NACH form is to enable the auto debit facility for
+        your bank account so you can pay your EMIs on time automatically. On recieving your NACH form, we’ll send you a loan agreement on
+        the app. You'll need to review and submit the agreement. Post this, your loan amount will be credited into your bank account in a
+        few hours.
+      </Typography>
+    </Faq>
+  </Box>
+</ThemeProvider>
+```
+
+### Render hello world!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 312 }}>
+    <Faq label={"Q. Who is eligible to apply for a loan on the Money View app?"} id={"faq"} expanded={false}>
+      <Typography style={{ margin: 0 }}>
+        A. You can get an instant loan on Money View without any paperwork by following these steps: Complete and submit your loan
+        application on the app. Once you've submitted your loan application, we'll go throught your documents and assess your
+        creditworthiness along with the other important details on your application. Post the verification process, we’ll send you a NACH
+        form, which you're required to print, sing on, scan, and send back to us. This NACH form is to enable the auto debit facility for
+        your bank account so you can pay your EMIs on time automatically. On recieving your NACH form, we’ll send you a loan agreement on
+        the app. You'll need to review and submit the agreement. Post this, your loan amount will be credited into your bank account in a
+        few hours.
+      </Typography>
+    </Faq>
+  </Box>
+</ThemeProvider>
+```

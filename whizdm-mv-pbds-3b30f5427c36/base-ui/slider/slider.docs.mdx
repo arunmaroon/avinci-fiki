@@ -1,0 +1,99 @@
+---
+description: A Slider component.
+---
+
+import { Box } from "@mui/material";
+
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { IconNames } from "@mvloans/base-ui.mv-svg-icon";
+
+import { sliderVariants } from "./constants";
+import { Slider } from "./slider";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Slider />
+</ThemeProvider>
+```
+
+### Render Slider Flipkart!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 300 }}>
+    <Slider
+      id={"Basic"}
+      thumbIcon={IconNames.thumbHandleIcon}
+      marks={[
+        {
+          value: 0,
+          label: "Min ₹10,000",
+        },
+        {
+          value: 100,
+          label: "Max ₹90,000",
+        },
+      ]}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Slider Green!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 300 }}>
+    <Slider
+      id={"Basic"}
+      variant={sliderVariants.GREEN}
+      thumbIcon={IconNames.thumbCircleIcon}
+      marks={[
+        {
+          value: 0,
+          label: "Min ₹10,000",
+        },
+        {
+          value: 100,
+          label: "Max ₹90,000",
+        },
+      ]}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Slider Flipkart!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 300 }}>
+    <Slider
+      id={"Basic"}
+      thumbIcon={IconNames.thumbCircleIcon}
+      marks={[
+        {
+          value: 0,
+          label: "Min ₹10,000",
+        },
+        {
+          value: 50,
+          label: "50",
+        },
+        {
+          value: 60,
+          label: "60",
+        },
+        {
+          value: 100,
+          label: "Max ₹90,000",
+        },
+      ]}
+    />
+  </Box>
+</ThemeProvider>
+```

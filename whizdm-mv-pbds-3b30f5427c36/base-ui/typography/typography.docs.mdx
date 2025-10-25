@@ -1,0 +1,32 @@
+---
+description: "A Typography component."
+labels: ["label1", "label2", "label3"]
+---
+
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { TypographyVariants } from "@mvloans/base-ui.common";
+import { pothosTokens } from "@mvloans/base-ui.tokens";
+import { Typography } from "./typography";
+
+Typography component that renders text based on variant and other props specified
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Typography variant={TypographyVariants.H1}>PlayGround Live</Typography>
+</ThemeProvider>
+```
+
+### Using props to customize the text
+
+Modify the variant and other props to see it change live:
+
+```js live
+const { semColors } = tokens;
+<ThemeProvider>
+  <Typography colorValue={semColors.neutral.text.highEmphasis} variant={TypographyVariants.title2} textTransform="upper">
+    PlayGround Live
+  </Typography>
+</ThemeProvider>;
+```

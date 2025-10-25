@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'AT Aero';
+  font-weight: 350;
+  font-display: swap;
+  font-style: normal;
+  src: local('AT Aero Regular'), local('AtAero-Regular'),
+    url(./fonts/fontFiles/AtAero-Retina.otf) format('opentype');
+}
+@font-face {
+  font-family: 'AT Aero';
+  font-weight: 500;
+  font-display: swap;
+  src: local('AT Aero Medium'), local('AtAero-Regular'),
+    url(./fonts/fontFiles/AtAero-Medium.otf) format('opentype');
+  line-height: normal;
+
+}
+
+@font-face {
+  font-family: 'AT Aero';
+  font-weight: 600;
+  font-display: swap;
+  src: local('AT Aero Semibold'), local('AtAero-Semibold'),
+    url(./fonts/fontFiles/AtAero-Semibold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'AT Aero';
+  font-weight: 700;
+  font-display: swap;
+  src: local('AT Aero Bold'), local('AtAero-Bold'),
+    url(./fonts/fontFiles/AtAero-Bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'AT Aero';
+  font-weight: 800;
+  font-display: swap;
+  src: local('AT Aero Black'), local('AtAero-Black'),
+    url(./fonts/fontFiles/AtAero-Black.otf) format('opentype');
+}
+
+body {
+  font-size: 10px;
+  line-height: normal;
+}
+
+/* CSS Reset */
+span, 
+h1, h2, h3, h4, h5, h6, p, 
+a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    line-height: normal;
+}

@@ -1,0 +1,96 @@
+---
+description: A Button component.
+---
+
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+import { buttonVariantConstants } from "./constants";
+import { Button } from "./button";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Button variant={String} size={String} withIcon={Boolean} disabled={Boolean} iconName={String}>
+    Button
+  </Button>
+</ThemeProvider>
+```
+
+### Render Primary Button
+
+```js live
+<ThemeProvider>
+  <Button dataTestId="PrimaryWithIcon" variant={buttonVariantConstants.PRIMARY} withIcon={true} disabled={false}>
+    Button
+  </Button>
+</ThemeProvider>
+```
+
+### Render SUPPORT PRIMARY Button
+
+```js live
+<ThemeProvider>
+  <Button dataTestId="SecondaryWithIcon" variant={buttonVariantConstants.SUPPORT_PRIMARY} withIcon={true} disabled={false}>
+    Button
+  </Button>
+</ThemeProvider>
+```
+
+### Render SUPPORT SECONDARY Button
+
+```js live
+<ThemeProvider>
+  <Button dataTestId="SecondaryWithIcon" variant={buttonVariantConstants.SUPPORT_SECONDARY} withIcon={true} disabled={false}>
+    Button
+  </Button>
+</ThemeProvider>
+```
+
+### Render DANGER Button
+
+```js live
+<ThemeProvider>
+  <Button variant={buttonVariantConstants.DANGER} withIcon={true} disabled={false}>
+    Button
+  </Button>
+</ThemeProvider>
+```
+
+### Render LINK Button
+
+```js live
+<ThemeProvider>
+  <Button variant={buttonVariantConstants.LINK} withIcon={true} disabled={false}>
+    Button
+  </Button>
+</ThemeProvider>
+```
+
+### Render Disabled Button
+
+```js live
+<ThemeProvider>
+  <Button withIcon={true} disabled={true}>
+    Button
+  </Button>
+</ThemeProvider>
+```
+
+### Render Loading Button
+
+```js live
+<ThemeProvider>
+  <Button isLoading={true}>Button</Button>
+</ThemeProvider>
+```
+
+### Render Skeleton Button
+
+```js live
+<ThemeProvider>
+  <Button isSkeleton={true}>Button</Button>
+</ThemeProvider>
+```

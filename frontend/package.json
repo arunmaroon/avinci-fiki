@@ -4,6 +4,9 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "@builder.io/react": "^8.2.8",
+    "@builder.io/sdk": "^6.1.2",
+    "@builder.io/sdk-react": "^4.2.4",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@heroicons/react": "^2.0.18",

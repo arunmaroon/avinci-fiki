@@ -1,0 +1,39 @@
+---
+description: A Snackbar component.
+---
+
+import { Snackbar } from "./snackbar";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Snackbar 
+  showClose={true} 
+  message="SnackBar Message" 
+  iconType="error" />
+</ThemeProvider>
+```
+
+### Render Snackbar With Close Icon
+
+```js live
+<ThemeProvider>
+  <Snackbar 
+  message="This is a success" 
+  iconType="success" />
+</ThemeProvider>
+```
+### Render Snackbar Without Close Icon
+
+```js live
+<ThemeProvider>
+  <Snackbar 
+  showClose={false} 
+  message="This is an error" 
+  iconType="error" />
+</ThemeProvider>
+```

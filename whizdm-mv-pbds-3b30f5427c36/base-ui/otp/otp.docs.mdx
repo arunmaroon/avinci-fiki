@@ -1,0 +1,56 @@
+---
+description: A Otp component.
+---
+
+import { Otp } from "./otp";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Otp />
+</ThemeProvider>
+```
+
+### Render loader otp!
+
+```js live
+<ThemeProvider>
+  <Otp isLoading numInputs="3" />
+</ThemeProvider>
+```
+
+### Render otp!
+
+```js live
+<ThemeProvider>
+  <Otp />
+</ThemeProvider>
+```
+
+### Render otp with 5 inputs with error
+
+```js live
+<ThemeProvider>
+  <Otp numInputs="5" hasError={true} errorText="Please enter valid otp" />
+</ThemeProvider>
+```
+
+### Render otp with 6 inputs
+
+```js live
+<ThemeProvider>
+  <Otp numInputs="6" />
+</ThemeProvider>
+```
+
+### Render otp with disabled inputs
+
+```js live
+<ThemeProvider>
+  <Otp isDisabled={true} numInputs="6" />
+</ThemeProvider>
+```

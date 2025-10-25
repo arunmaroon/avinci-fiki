@@ -1,0 +1,34 @@
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from '@mui/material';
+import { LineDivider } from "./line-divider";
+import { Divider } from '@mui/material';
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <LineDivider />
+</ThemeProvider>
+```
+
+### Render Divider
+
+```js live
+<Box style={{ width: "140px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+  <ThemeProvider>
+    <LineDivider />
+  </ThemeProvider>
+</Box>
+```
+
+### Render Vertical Divider with children 
+
+```js live
+<Box style={{ height: "140px", display: "flex", padding: "10px" }}>
+  <ThemeProvider>
+    <LineDivider orientation="vertical">
+      Hello
+    </LineDivider>
+  </ThemeProvider>
+</Box>
+```

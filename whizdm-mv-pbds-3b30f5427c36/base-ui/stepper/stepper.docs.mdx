@@ -1,0 +1,102 @@
+---
+description: A Stepper component.
+---
+
+import { Stepper } from "./stepper";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+const steps= {[
+    {
+      stepperKey: "incomeVerification",
+      order: 1,
+      label: "Income Verification",
+      route: "getOffer",
+      status: "DISABLED",
+    },
+    {
+      stepperKey: "planSelector",
+      order: 2,
+      label: "Select Plan",
+      route: "selectPlan",
+      status: "DISABLED",
+    },
+    {
+      stepperKey: "additionalDetails",
+      order: 3,
+      label: "Enter Details",
+      route: "add-details",
+      status: "DISABLED",
+    },
+    {
+      stepperKey: "kycVerification",
+      order: 4,
+      label: "Verify KYC",
+      route: "kyc-select",
+      status: "DISABLED",
+    },
+    {
+      stepperKey: "uploadDocs",
+      order: 5,
+      label: "Upload documents",
+      route: "upload-document",
+      status: "DISABLED",
+    },
+  ]}
+<ThemeProvider>
+  <Stepper steps={steps} activeStepIndex={0} redirectToStepper={(index) => console.log(index)} controlSelectedKey={null} />
+</ThemeProvider>;
+```
+
+### Render hello world!
+
+```js live
+<ThemeProvider>
+  <Stepper 
+    steps= {[
+    {
+      stepperKey: "incomeVerification",
+      order: 1,
+      label: "Income Verification",
+      route: "getOffer",
+      status: "COMPLETED",
+    },
+    {
+      stepperKey: "planSelector",
+      order: 2,
+      label: "Select Plan",
+      route: "selectPlan",
+      status: "ACTIVE",
+    },
+    {
+      stepperKey: "additionalDetails",
+      order: 3,
+      label: "Enter Details",
+      route: "add-details",
+      status: "DISABLED",
+    },
+    {
+      stepperKey: "kycVerification",
+      order: 4,
+      label: "Verify KYC",
+      route: "kyc-select",
+      status: "DISABLED",
+    },
+    {
+      stepperKey: "uploadDocs",
+      order: 5,
+      label: "Upload documents",
+      route: "upload-document",
+      status: "DISABLED",
+    },
+  ]}  
+    activeStepIndex={1}
+    redirectToStepper={(index) => console.log(index)}
+    controlSelectedKey={null}
+  />
+</ThemeProvider>
+```

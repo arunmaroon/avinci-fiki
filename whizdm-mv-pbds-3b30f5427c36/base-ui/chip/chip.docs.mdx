@@ -1,0 +1,63 @@
+---
+description: A Chip component.
+---
+
+import { Chip } from "./chip";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { IconNames } from "@mvloans/base-ui.mv-svg-icon";
+
+A component that does something special and renders text in a div.
+
+### Renders unselected chip
+
+```js live
+<ThemeProvider>
+  <Chip label="Item name" variant="outlined" type="unselected" selected={false} checked={false} value={"item"} />
+</ThemeProvider>
+```
+
+### Renders selected chip when multiple chip not allowed
+
+```js live
+<ThemeProvider>
+  <Chip label="Item name" variant="outlined" type="selectedNonMultiple" selected={true} value={"item"} />
+</ThemeProvider>
+```
+
+### Renders selected chip when multiple chip are allowed
+
+```js live
+<ThemeProvider>
+  <Chip label="Item name" variant="outlined" type="selectedMultiple" selected={true} checked={true} value={"item"} />
+</ThemeProvider>
+```
+
+### Renders selected chip with remove icon
+
+```js live
+<ThemeProvider>
+  <Chip
+    label="Item name"
+    variant="outlined"
+    type="selectedWithDeleteIcon"
+    selected={true}
+    onDelete={() => console.log("delete clicked")}
+    value={"item"}
+  />
+</ThemeProvider>
+```
+
+### Renders Input chip with custom & remove icon
+
+```js live
+<ThemeProvider>
+  <Chip
+    label="Item name"
+    variant="outlined"
+    type="inputWithCustomAndDeleteIcon"
+    iconName={IconNames.badgeIcon}
+    onDelete={() => console.log("delete clicked")}
+    value={"item"}
+  />
+</ThemeProvider>
+```

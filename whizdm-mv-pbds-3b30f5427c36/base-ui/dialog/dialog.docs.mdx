@@ -1,0 +1,70 @@
+---
+description: A Dialog component.
+---
+
+import { Dialog } from "./dialog";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that shows a bottom sheet modal.
+
+### Component usage!
+
+```js
+const [open, setOpen] = React.useState(true);
+const primaryButtonConfig = [
+  {
+    variant: buttonVariantConstants.PRIMARY,
+    btnText: "Verify OTP",
+    onClick: () => console.log("Verify OTP"),
+  },
+];
+const secondaryButtonConfig = [
+  {
+    variant: buttonVariantConstants.PRIMARY,
+    btnText: "Upload Back Statement",
+    onClick: () => console.log("Upload Back Statement Clicked"),
+  },
+  {
+    variant: buttonVariantConstants.SECONDARY,
+    btnText: "Try Again",
+    onClick: () => console.log("Try Again"),
+  },
+];
+const tertiaryButtonConfig = [
+  {
+    variant: buttonVariantConstants.TERTIARY,
+    btnText: "Continue",
+    onClick: () => console.log("Continue Clicked"),
+  },
+  {
+    variant: buttonVariantConstants.PRIMARY,
+    btnText: "Submit",
+    onClick: () => console.log("Submit Clicked"),
+  },
+];
+<ThemeProvider>
+  <Dialog
+    open={open}
+    title="Verify employment"
+    subTitle="OTP has been sent to your work email ID"
+    buttonConfig={primaryButtonConfig}></Dialog>
+</ThemeProvider>;
+```
+
+### Render Component!
+
+```js live
+<ThemeProvider>
+  <Dialog
+    open={false}
+    title="Verify employment"
+    subTitle="OTP has been sent to your work email ID"
+    buttonConfig={[
+      {
+        variant: "contained",
+        btnText: "Verify OTP",
+        onClick: () => console.log("Verify OTP"),
+      },
+    ]}></Dialog>
+</ThemeProvider>
+```

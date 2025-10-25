@@ -19,6 +19,8 @@ import TestRoute from './pages/TestRoute';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminRoles from './pages/AdminRoles';
 import DesignImport from './pages/DesignImport';
+import BuilderConverter from './pages/BuilderConverter';
+import EnhancedBuilderConverter from './pages/EnhancedBuilderConverter';
 import FigmaCallback from './components/FigmaCallback';
 import MoneyviewCallback from './components/MoneyviewCallback';
 import LoginPage from './pages/LoginPage';
@@ -64,7 +66,7 @@ function App() {
   return (
     <ThemeProvider theme={modernTheme}>
       <CssBaseline />
-      <Router>
+      <Router future={{ v7_relativeSplatPath: true }}>
         {!isAuthenticated ? (
           <Routes>
             <Route path="*" element={<LoginPage />} />
@@ -92,6 +94,8 @@ function App() {
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="/admin/roles" element={<AdminRoles />} />
                   <Route path="/admin/design-import" element={<DesignImport />} />
+                  <Route path="/admin/builder-converter" element={<BuilderConverter />} />
+                  <Route path="/admin/enhanced-converter" element={<EnhancedBuilderConverter />} />
                 </>
               )}
               

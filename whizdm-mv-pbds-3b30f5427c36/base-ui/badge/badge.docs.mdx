@@ -1,0 +1,26 @@
+---
+description: A Badge component.
+---
+
+import { Box } from "@mui/material";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { IconNames } from "@mvloans/base-ui.common";
+import { Badge } from "./badge";
+
+A component that renders a badge
+
+### Render Badge With icon
+
+```ts live
+<ThemeProvider>
+  <Badge iconHeight={24} iconWidth={24} iconName={IconNames.promoCodeTagIcon} />
+</ThemeProvider>
+```
+
+### Render Badge Without icon
+
+```ts live
+<ThemeProvider>
+  <Badge badgeContent={6} badgeColor="error" />
+</ThemeProvider>
+```

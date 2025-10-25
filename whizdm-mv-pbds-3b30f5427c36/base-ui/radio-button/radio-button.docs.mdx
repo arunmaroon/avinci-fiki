@@ -1,0 +1,75 @@
+---
+description: A RadioButton component.
+---
+
+import { RadioButton } from "./radio-button";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from "@mui/material";
+import { IconNames } from "@mvloans/base-ui.mv-svg-icon";
+
+A component that does something special and renders text in a div.
+
+### Render radio buttons in horizontal mode
+
+```js live
+<ThemeProvider>
+  <RadioButton
+    row
+    options={[
+      { value: "female", label: "Female" },
+      { value: "male", label: "Male" },
+    ]}
+  />
+</ThemeProvider>
+```
+
+### Render radio buttons in vertical mode
+
+```js live
+<ThemeProvider>
+  <RadioButton
+    options={[
+      { value: "female", label: "Female" },
+      { value: "male", label: "Male" },
+    ]}
+  />
+</ThemeProvider>
+```
+
+### Render radio buttons in all three modes
+
+```js live
+<ThemeProvider>
+  <RadioButton row options={[{ value: "", label: "" }]} disabled />
+  <RadioButton row options={[{ value: "", label: "" }]} />
+  <RadioButton row options={[{ value: "", label: "" }]} />
+</ThemeProvider>
+```
+
+### Render radio buttons with prefix in error state
+
+```js live
+<Box sx={{ width: { xs: 312, md: 480 } }}>
+  <ThemeProvider>
+    <RadioButton
+      dataTestId="radio-with-prefix-icon"
+      title="Your employment type"
+      error="Error message"
+      options={[
+        {
+          value: "salaried",
+          label: "Salaried",
+          icon: IconNames.radioIdCard,
+          selectedIcon: IconNames.radioIdCard,
+        },
+        {
+          value: "self-employed",
+          label: "Self-employed",
+          icon: IconNames.radioSelfEmployed,
+          selectedIcon: IconNames.radioSelfEmployed,
+        },
+      ]}
+    />
+  </ThemeProvider>
+</Box>
+```

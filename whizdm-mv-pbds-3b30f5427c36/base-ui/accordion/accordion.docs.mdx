@@ -1,0 +1,34 @@
+---
+description: A Accordion component.
+---
+
+import { Accordion } from "./accordion";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from "@mui/material";
+import TextField from "@mvloans/base-ui.text-field";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Box sx={{ width: 480 }}>
+    <Accordion label={"Personal Details"} state={"error"} id={"error"}>
+      <TextField label="Father's Name" />
+    </Accordion>
+  </Box>
+</ThemeProvider>
+```
+
+### Render Accordion!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 480 }}>
+    <Accordion label={"Personal Details"} state={"error"} id={"error"}>
+      <TextField label="Father's Name" />
+    </Accordion>
+  </Box>
+</ThemeProvider>
+```

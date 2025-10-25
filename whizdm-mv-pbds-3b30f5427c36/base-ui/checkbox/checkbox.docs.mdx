@@ -1,0 +1,40 @@
+---
+description: A Checkbox component.
+---
+
+import { Checkbox } from "./checkbox";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that does something special and renders text in a div.
+
+### Default Checkbox
+
+```js live
+<ThemeProvider>
+  <Checkbox label="Default checkbox" />
+</ThemeProvider>
+```
+
+### Selected checkbox
+
+```js live
+<ThemeProvider>
+  <Checkbox checked={true} label="Selected checkbox" />
+</ThemeProvider>
+```
+
+### Disabled checkbox
+
+```js live
+<ThemeProvider>
+  <Checkbox disabled label="Disabled checkbox" />
+</ThemeProvider>
+```
+
+### Indeterminate checkbox
+
+```js live
+<ThemeProvider>
+  <Checkbox label="Indeterminate checkbox" indeterminate={true} />
+</ThemeProvider>
+```

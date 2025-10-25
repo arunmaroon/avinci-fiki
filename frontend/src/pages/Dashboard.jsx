@@ -22,7 +22,8 @@ import {
     ChartPieIcon,
     UserCircleIcon,
     PuzzlePieceIcon,
-    RocketLaunchIcon
+    RocketLaunchIcon,
+    CodeBracketIcon
 } from '@heroicons/react/24/outline';
 import api from '../utils/api';
 
@@ -419,6 +420,14 @@ const Dashboard = () => {
                                 <Link to="/message-demo" className="flex items-center p-2 hover:bg-green-100 rounded-lg transition-colors">
                                     <DocumentTextIcon className="w-4 h-4 text-green-600 mr-3" />
                                     <span className="text-sm font-medium">Message Beautifier Demo</span>
+                                </Link>
+                                <Link to="/admin/figma-converter" className="flex items-center p-2 hover:bg-green-100 rounded-lg transition-colors">
+                                    <CodeBracketIcon className="w-4 h-4 text-green-600 mr-3" />
+                                    <span className="text-sm font-medium">Figma Converter</span>
+                                </Link>
+                                <Link to="/admin/figma-builder" className="flex items-center p-2 hover:bg-green-100 rounded-lg transition-colors">
+                                    <SparklesIcon className="w-4 h-4 text-green-600 mr-3" />
+                                    <span className="text-sm font-medium">Figma Builder</span>
                                 </Link>
                             </div>
                         </motion.div>

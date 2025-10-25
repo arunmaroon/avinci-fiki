@@ -1,0 +1,72 @@
+---
+description: A PlanSelector component.
+---
+
+import { PlanSelector } from './plan-selector';
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from "@mui/material";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+```js
+<PlanSelector
+  activeCard={String}
+  cardList={Array of objects}
+  isActive={Boolean}
+  id={String}
+  onClick={Function}
+/>
+```
+
+### Render hello world!
+
+```js live
+<Box sx={{ maxWidth: { xs: 312, md: 480 } }}>
+    <ThemeProvider>
+        <PlanSelector
+            cardList={[
+                            {
+                                id: "abcd",
+                                loanTenure: 36,
+                                emi: "8,797",
+                                totalInterest: "650",
+                            },
+                            {
+                                id: "efgh",
+                                loanTenure: 36,
+                                emi: "8,797",
+                                totalInterest: "650",
+                            },
+                            {
+                                id: "ijkl",
+                                loanTenure: 36,
+                                emi: "8,797",
+                                totalInterest: "650",
+                            },
+                            {
+                                id: "mnop",
+                                loanTenure: 36,
+                                emi: "8,797",
+                                totalInterest: "650",
+                            },
+                            {
+                                id: "qrst",
+                                loanTenure: 36,
+                                emi: "8,797",
+                                totalInterest: "650",
+                            },
+                            {
+                                id: "uvwx",
+                                loanTenure: 36,
+                                emi: "8,797",
+                                totalInterest: "650",
+                            },
+                        ]}
+            activeCard={"abcd"}
+            displayCount={3}
+            onClick={(id) => console.log(id)}
+        />
+    </ThemeProvider>
+</Box>
+```

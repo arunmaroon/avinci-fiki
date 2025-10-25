@@ -1,0 +1,40 @@
+---
+description: A PennyItem component.
+---
+
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+import { PennyItem } from "./penny-item";
+import { radiusConstants, sizeConstants, pennyItemVariant, numberStates } from "./constants";
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <PennyItem variant={String} radius={String} size={String} label={Number} numberState={String} profileLabel={String} />
+</ThemeProvider>
+```
+
+### Render Penny Icon
+
+```js live
+<ThemeProvider>
+  <PennyItem variant={pennyItemVariant.ICON} radius={radiusConstants.CIRCLE} size={sizeConstants.SMALL} />
+</ThemeProvider>
+```
+
+### Render Number List Icon
+
+```js live
+<ThemeProvider>
+  <PennyItem variant={pennyItemVariant.NUMBER} label={2} numberState={numberStates.ACTIVE} />
+</ThemeProvider>
+```
+
+### Render Profile Icon
+
+```js live
+<ThemeProvider>
+  <PennyItem variant={pennyItemVariant.PROFILE} profileLabel="NK" />
+</ThemeProvider>
+```

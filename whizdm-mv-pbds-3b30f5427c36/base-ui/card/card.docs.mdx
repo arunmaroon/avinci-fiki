@@ -1,0 +1,39 @@
+---
+description: A Card component.
+---
+
+import { Card } from "./card";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { cardVariants } from "./constants";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<Card variant={String} icon={String} title={String} subTitle={String} text={String} textIcon={String} chipText={String} />
+```
+
+### Render Card Variant 1
+
+```js live
+<ThemeProvider>
+  <Card
+    variant={cardVariants.CARD_VARIANT_1}
+    icon="a-icon-card-default"
+    title="Title"
+    subTitle="Description"
+    text="Less than 1min"
+    textIcon="a-icon-card-default"
+    chipText="Recommended"
+  />
+</ThemeProvider>
+```
+
+### Render Card Variant 2
+
+```js live
+<ThemeProvider>
+  <Card variant={cardVariants.CARD_VARIANT_2} icon="a-icon-card-default" title="Title" subTitle="Description" />
+</ThemeProvider>
+```

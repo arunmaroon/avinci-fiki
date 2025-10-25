@@ -10,10 +10,15 @@ import {
   MagnifyingGlassIcon,
   PlusIcon,
   LinkIcon,
-  PuzzlePieceIcon
+  PuzzlePieceIcon,
+  CodeBracketIcon,
+  SparklesIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline';
 import AdminRoles from './AdminRoles';
 import DesignImport from './DesignImport';
+import BuilderConverter from './BuilderConverter';
+import EnhancedBuilderConverter from './EnhancedBuilderConverter';
 import MoneyviewIntegration from '../components/MoneyviewIntegration';
 import usePermissions from '../hooks/usePermissions';
 
@@ -47,6 +52,18 @@ const AdminDashboard = () => {
       description: 'Import and manage Figma prototypes'
     },
     {
+      id: 'builder-converter',
+      name: 'Builder.io Converter',
+      icon: SparklesIcon,
+      description: 'Convert designs to React using Builder.io AI'
+    },
+    {
+      id: 'enhanced-converter',
+      name: 'Enhanced Converter',
+      icon: PhotoIcon,
+      description: 'AI Vision + Builder.io for screenshots and Figma URLs'
+    },
+    {
       id: 'integrations',
       name: 'Integrations',
       icon: LinkIcon,
@@ -68,6 +85,10 @@ const AdminDashboard = () => {
         return <ProductManagement />;
       case 'design':
         return <DesignImport />;
+      case 'builder-converter':
+        return <BuilderConverter />;
+      case 'enhanced-converter':
+        return <EnhancedBuilderConverter />;
       case 'integrations':
         return <AdminIntegrations />;
       case 'overview':

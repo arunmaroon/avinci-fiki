@@ -1,0 +1,38 @@
+---
+description: A Tab component.
+---
+
+import {Tab} from "./tab";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Tab
+    value={0}
+    tabsList={[
+      { label: "a" },
+      { label: "b" },
+      { label: "c" },
+    ]}
+  />
+</ThemeProvider>
+```
+
+### Render Selected Tab!
+
+```js live
+<ThemeProvider>
+  <Tab
+    value={0}
+    tabsList={[
+      { label: "a" },
+      { label: "b" },
+      { label: "c" },
+    ]}
+  />
+</ThemeProvider>
+```

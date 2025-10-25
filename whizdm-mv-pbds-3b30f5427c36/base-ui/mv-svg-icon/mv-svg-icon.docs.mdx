@@ -1,0 +1,30 @@
+---
+description: A Icon component.
+---
+
+import { MvSvgIcon } from "./mv-svg-icon";
+import { Box } from "@mui/material";
+
+import { IconNames } from "@mvloans/base-ui.common";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+import { MvSvgIcon } from "./mv-svg-icon";
+import { IconNames } from "@mvloans/base-ui.common";
+```
+
+### Render SVG Icons!
+
+```js live
+<>
+  {Object.keys(IconNames).map((iconName) => (
+    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "5px" }}>
+      <MvSvgIcon name={iconName} />
+      <span>{iconName}</span>
+    </Box>
+  ))}
+</>
+```

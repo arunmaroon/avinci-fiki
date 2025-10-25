@@ -1,0 +1,96 @@
+---
+description: A ConfigCard component.
+---
+
+import { ConfigCard } from "./config-card";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+const config = {
+  // The title of the card
+  title: "Loan Application",
+
+  // The description of the card
+  description: "Complete your loan application in few minutes to get a loan",
+
+  // Which state the card is in (active, completed, disabled, error)
+  cardStatus: "active",
+
+  // Top right element
+  topRightElement: {
+    type: "chip",
+    chipConfig: {
+      label: "Custom Chip Label",
+    },
+  },
+
+  // Footer that displays a string as well as a react node
+  footer: "Note: Keep your documents ready",
+
+  // The action button/link
+  cardAction: [
+    {
+      disabled: false,
+      ID: "1",
+      children: "Complete Now"
+    }
+  ],
+
+  // An avatar that displays the number of the card or an icon
+  avatar: 0,
+
+  // Hide the entire card
+  shouldHide: false,
+};
+// The onClick for the button
+const handleClickAction = (controlEl) => {
+  if (controlEl === "Loan Application") {
+    console.log("Button Clicked");
+  }
+};
+<ThemeProvider>
+  <ConfigCard
+    config={config}
+    onClick={() => {
+      handleClickAction("Loan Application");
+    }}
+  />
+</ThemeProvider>;
+```
+
+### Render hello world!
+
+```js live
+<ThemeProvider>
+  <ConfigCard
+    config={{
+      title: "Loan Application",
+      description: "Complete your loan application in few minutes to get a loan",
+      cardStatus: "active",
+      topRightElement: {
+        type: "chip",
+        chipConfig: {
+          label: "Custom Chip Label",
+        },
+      },
+      footer: "Note: Keep your documents ready",
+      cardAction: [
+        {
+          disabled: false,
+          id: "1",
+          children: "Complete Now"
+        }
+      ],
+      avatar: 0,
+      shouldHide: false,
+    }}
+    onClick={() => {
+      console.log("Loan Application");
+    }}
+  />
+</ThemeProvider>
+```

@@ -1,0 +1,27 @@
+---
+description: Title component.
+---
+
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Title } from "./title";
+import { TitleType } from "./constants";
+
+A component that renders a Title
+
+### Component usage
+
+### Render title!
+
+```js
+<ThemeProvider>
+  <Title title="Hello" />
+</ThemeProvider>
+```
+
+### Render title with description!
+
+```js live
+<ThemeProvider>
+  <Title variant="screen" title="Some title" subtitle="This is the short description" />
+</ThemeProvider>
+```

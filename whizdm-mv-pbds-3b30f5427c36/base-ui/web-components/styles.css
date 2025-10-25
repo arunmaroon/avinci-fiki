@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'AtAero';
+  src: url('./fonts/AtAero-Retina.woff2') format('woff2');
+  font-weight: 350;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AtAero';
+  src: url('./fonts/AtAero-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AtAero';
+  src: url('./fonts/AtAero-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AtAero';
+  src: url('./fonts/AtAero-Black.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}

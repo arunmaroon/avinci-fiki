@@ -1,0 +1,193 @@
+---
+description: A TextField component.
+---
+
+import { TextField } from "./text-field";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import Typography from "@mvloans/base-ui.typography";
+import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
+import { TypographyVariants } from "@mvloans/base-ui.common";
+
+TextField component
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <TextField value="Hello World" />
+</ThemeProvider>
+```
+
+### Render Skeleton
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: { xs: 360, md: 312 } }}>
+    <TextField isLoading label="Label Value" placeholder="Placeholder" helperText="Assistive Text" error={false} disabled={false} />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Text Field
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: { xs: 360, md: 312 } }}>
+    <TextField label="Label Value" placeholder="Placeholder" helperText="Assistive Text" error={false} disabled={false} />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Suffix Link
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: { xs: 360, md: 312 } }}>
+    <TextField
+      showSuffix
+      suffix={
+        <Typography colorValue="#28292D" href="https://moneyview.in/" variant={TypographyVariants.bodySmallHighEmphasis}>
+          Link
+        </Typography>
+      }
+      label="Label Value"
+      placeholder="Placeholder"
+      helperText="Assistive Text"
+      error={false}
+      disabled={false}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Select Dropdown
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: { xs: 360, md: 312 } }}>
+    <TextField
+      options={[
+        { label: "Option", value: "value" },
+        { label: "Option2", value: "value2" },
+        { label: "Option3", value: "value3" },
+      ]}
+      label="Label Value"
+      placeholder="Placeholder"
+      helperText="Assistive Text"
+      error={false}
+      disabled={false}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Select Dropdown with Icon
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: { xs: 360, md: 312 } }}>
+    <TextField
+      options={[
+        {
+          label: "Yes Bank",
+          icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/Yes-qwk7mcH7-1413538889962.jpeg",
+          value: "2c9f8ce54919308901491d7bc3e41342",
+        },
+        {
+          label: "ICICI Bank",
+          icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/ICICI-S8QwYqHH-1413538395681.jpeg",
+          value: "2c9f8ce54919308901491d7439341334",
+        },
+        {
+          label: "HDFC Bank",
+          icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/HDFC-kc4ahGGE-1413538352542.gif",
+          value: "2c9f8ce54919308901491d7391121332",
+        },
+      ]}
+      label="Label Value"
+      placeholder="Placeholder"
+      helperText="Assistive Text"
+      error={false}
+      disabled={false}
+      search={true}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Select Dropdown with Groups
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: { xs: 360, md: 312 } }}>
+    <TextField
+      options={[
+        {
+          label: "POPULAR BANKS",
+          subItems: [
+            {
+              label: "Yes Bank",
+              icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/Yes-qwk7mcH7-1413538889962.jpeg",
+              value: "2c9f8ce54919308901491d7bc3e41342",
+            },
+            {
+              label: "ICICI Bank",
+              icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/ICICI-S8QwYqHH-1413538395681.jpeg",
+              value: "2c9f8ce54919308901491d7439341334",
+            },
+            {
+              label: "HDFC Bank",
+              icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/HDFC-kc4ahGGE-1413538352542.gif",
+              value: "2c9f8ce54919308901491d7391121332",
+            },
+          ],
+        },
+        {
+          label: "OTHER BANKS",
+          subItems: [
+            {
+              label: "Yes Bank",
+              icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/Yes-qwk7mcH7-1413538889962.jpeg",
+              value: "2c9f8ce54919308901491d7bc3e41342",
+            },
+            {
+              label: "ICICI Bank",
+              icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/ICICI-S8QwYqHH-1413538395681.jpeg",
+              value: "2c9f8ce54919308901491d7439341334",
+            },
+            {
+              label: "HDFC Bank",
+              icon: "https://s3.amazonaws.com/biller.moneywhiz.whizdm.com/HDFC-kc4ahGGE-1413538352542.gif",
+              value: "2c9f8ce54919308901491d7391121332",
+            },
+          ],
+        },
+      ]}
+      label="Label Value"
+      placeholder="Placeholder"
+      helperText="Assistive Text"
+      error={false}
+      disabled={false}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render Mask Input
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: { xs: 360, md: 312 } }}>
+    <TextField maskType="date" label="Label Value" placeholder="DD/MM/YYYY" helperText="Assistive Text" error={false} disabled={false} />
+  </Box>
+</ThemeProvider>
+```
+
+### Render aadhaar Mask Input
+
+```js live
+<ThemeProvider>
+  <TextField maskType="aadhaar" helperText="Enter first 8 digits of aadhaar" error={false} disabled={false} last4digits={"1234"} />
+</ThemeProvider>
+```

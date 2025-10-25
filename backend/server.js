@@ -301,6 +301,16 @@ app.use('/api/moneyview', require('./routes/moneyviewAuth')); // Moneyview OAuth
 // ✅ Design & Figma Imports
 app.use('/api/design', require('./routes/design'));
 
+// ✅ Builder.io Design Converter
+app.use('/api/builder', require('./routes/builder')); // Builder.io design-to-code conversion
+app.use('/api/vision', require('./routes/vision')); // AI Vision image-to-code conversion
+
+// ✅ Figma UI Converter
+app.use('/api/figma-ui', require('./routes/figmaUI')); // Figma prototype to working UI
+
+// ✅ Figma OAuth
+app.use('/api/figma-oauth', require('./routes/figmaOAuth')); // Figma OAuth authentication
+
 // ✅ Utility Routes
 app.use('/api/generate', require('./routes/generate'));
 app.use('/api/debug', require('./routes/debug'));

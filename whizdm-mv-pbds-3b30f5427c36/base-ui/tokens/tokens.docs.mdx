@@ -1,0 +1,190 @@
+---
+description: A ThemeProvider component.
+---
+
+import { pothosTokens } from ".";
+
+A component that does something special and renders text in a div.
+
+### Render opacity!
+
+```js live
+<>
+  {Object.entries(pothosTokens.opacity).map(([opacityName, opacityValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", opacity: opacityValue }}>{opacityName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render shadow!
+
+```js live
+<>
+  {Object.entries(pothosTokens.shadow).map(([shadowName, shadowValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", boxShadow: shadowValue }}>{shadowName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render borderWidth!
+
+```js live
+<>
+  {Object.entries(pothosTokens.borderWidth).map(([borderWidthName, borderWidthValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", borderWidth: borderWidthValue, borderStyle: "solid" }}>
+        {borderWidthName}
+      </div>
+    </div>
+  ))}
+</>
+```
+
+### Render radius!
+
+```js live
+<>
+  {Object.entries(pothosTokens.radius).map(([radiusName, radiusValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", borderRadius: radiusValue }}>{radiusName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render textDecoration!
+
+```js live
+<>
+  {Object.entries(pothosTokens.textDecoration).map(([textDecorationName, textDecorationValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", textDecoration: textDecorationValue }}>
+        This is {textDecorationName}
+      </div>
+    </div>
+  ))}
+</>
+```
+
+### Render letterSpacing!
+
+```js live
+<>
+  {Object.entries(pothosTokens.letterSpacing).map(([letterSpacingName, letterSpacingValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", letterSpacing: letterSpacingValue }}>
+        This is {letterSpacingName}
+      </div>
+    </div>
+  ))}
+</>
+```
+
+### Render fontWeight!
+
+```js live
+<>
+  {Object.entries(pothosTokens.fontWeight).map(([fontWeightName, fontWeightValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", fontWeight: fontWeightValue }}>This is {fontWeightName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render lineHeight!
+
+```js live
+<>
+  {Object.entries(pothosTokens.lineHeight).map(([lineHeightName, lineHeightValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", lineHeight: lineHeightValue }}>This is {lineHeightName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render fontSize!
+
+```js live
+<>
+  {Object.entries(pothosTokens.fontSize).map(([fontSizeName, fontSizeValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", fontSize: fontSizeValue }}>This is {fontSizeName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render fontFamily!
+
+```js live
+<>
+  {Object.entries(pothosTokens.fontFamily).map(([fontFamilyName, fontFamilyValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", fontFamily: fontFamilyValue }}>This is {fontFamilyName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render spacing!
+
+```js live
+<>
+  {Object.entries(pothosTokens.spacing).map(([spacingName, spacingValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", margin: spacingValue }}>This is {spacingName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render sizing!
+
+```js live
+<>
+  {Object.entries(pothosTokens.sizing).map(([sizingName, sizingValue]) => (
+    <div>
+      <div style={{ backgroundColor: "black", color: "white", padding: "1rem", width: sizingValue, height: sizingValue }}>
+        This is {sizingName}
+      </div>
+    </div>
+  ))}
+</>
+```
+
+### Render Colors!
+
+```js live
+<>
+  {Object.entries(pothosTokens.color).map(([colorName, colorValue]) => (
+    <div>
+      <div style={{ backgroundColor: colorValue, color: "black", padding: "1rem" }}>{colorName}</div>
+    </div>
+  ))}
+</>
+```
+
+### Render semColors!
+
+```js live
+<>
+  {Object.entries(pothosTokens.semColors).map(([category, colors]) => (
+    <div key={category}>
+      <h2>{category}</h2>
+      <ul>
+        {Object.entries(colors).map(([type, color]) => (
+          <li key={type}>
+            {type}: {color}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</>
+```

@@ -1,0 +1,76 @@
+---
+description: A List component.
+---
+
+import { List } from "./list";
+import { Box } from "@mui/material";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { IconNames } from "@mvloans/base-ui.common";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <List
+    options={[
+      { primaryText: "Location", secondaryText: "To verify address details", icon: "ic-print" },
+      {
+        primaryText: "SMS",
+        secondaryText: "To check eligibility and loan amount",
+        icon: "ic-print",
+      },
+      { primaryText: "Media and photos", secondaryText: "To update selfie", icon: "ic-print" },
+    ]}
+  />
+</ThemeProvider>
+```
+
+### Render list!
+
+```js live
+<ThemeProvider>
+  <Box style={{ width: "480px" }}>
+    <List
+      options={[
+        { primaryText: "Location", secondaryText: "To verify address details", icon: "ic-print" },
+        {
+          primaryText: "SMS",
+          secondaryText: "To check eligibility and loan amount",
+          icon: "ic-print",
+        },
+        { primaryText: "Media and photos", secondaryText: "To update selfie", icon: "ic-print" },
+      ]}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render list with alignItems and arrow!
+
+```js live
+<ThemeProvider>
+  <Box style={{ width: "480px" }}>
+    <List
+      options={[
+        { primaryText: "Location", secondaryText: "To verify address details", icon: "ic-print" },
+        {
+          primaryText: "SMS",
+          secondaryText: "To check eligibility and loan amount",
+          icon: "ic-print",
+          children: <p>This is child node</p>,
+          rightIcon: IconNames.chevronRightIcon,
+        },
+        { 
+          primaryText: "Media and photos", 
+          secondaryText: "To update selfie", 
+          icon: "ic-print", 
+          rightIcon: IconNames.chevronRightIcon, 
+        },
+      ]}
+      alignItems="center"
+    />
+  </Box>
+</ThemeProvider>
+```

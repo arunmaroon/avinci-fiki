@@ -1,0 +1,26 @@
+import Typography from "@mvloans/base-ui.typography";
+import { TypographyVariants } from "@mvloans/base-ui.common";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Tooltip } from "./tooltip";
+
+A component that renders a tooltip.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Tooltip label="tooltip label" position="top" alignment="start">
+    <Typography variant={TypographyVariants.bodySmallHighEmphasis}>hover to see tooltip</Typography>
+  </Tooltip>
+</ThemeProvider>
+```
+
+### Render tooltip with label at center
+
+```js live
+<ThemeProvider>
+  <Tooltip label="tooltip label" position="top" alignment="center">
+    <Typography variant={TypographyVariants.bodySmallHighEmphasis}>hover to see tooltip</Typography>
+  </Tooltip>
+</ThemeProvider>
+```

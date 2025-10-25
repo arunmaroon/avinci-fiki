@@ -1,0 +1,35 @@
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import Button, { buttonVariantConstants } from "@mvloans/base-ui.button";
+import { AlertCard } from "./alert-card";
+
+### Component usage
+
+```js
+const [open, setOpen] = React.useState(false);
+const buttonConfig = [
+  {
+    variant: buttonVariantConstants.PRIMARY,
+    btnText: "Continue",
+    onClick: () => console.log("Continue Clicked"),
+  },
+  {
+    variant: buttonVariantConstants.SUPPORT_SECONDARY,
+    btnText: "Cancel",
+  },
+];
+
+<ThemeProvider>
+  <Button variant={buttonVariantConstants.PRIMARY} onClick={() => setOpen(true)}>
+    {"Click To Open"}
+  </Button>
+  <AlertCard
+    open={open}
+    title="Title"
+    description="This is a short description"
+    buttonConfig={buttonConfig}
+    onClose={(val) => {
+      setOpen(val);
+    }}
+  />
+</ThemeProvider>;
+```

@@ -1,0 +1,25 @@
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from '@mui/material';
+import { ScrimArea } from "./scrim-area";
+import { Divider } from '@mui/material';
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <ScrimArea />
+</ThemeProvider>
+```
+
+### Live Scrim Area example
+
+```js live
+<Box style={{ width: "200px", height: "140px", padding: "20px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+  <ThemeProvider>
+    <ScrimArea />
+    <div style={{ position: "absolute"}}>
+      Opacity - 0.5
+    </div>
+  </ThemeProvider>
+</Box>
+```

@@ -14,7 +14,7 @@ function requireEnv() {
 
 function getOAuthUrl(state) {
   const redirect = encodeURIComponent(process.env.FIGMA_REDIRECT_URI || 'http://localhost:3000/admin/figma-callback');
-  const scope = encodeURIComponent('file_read');
+  const scope = encodeURIComponent('file:read');
   return `${OAUTH_BASE}?client_id=${process.env.FIGMA_CLIENT_ID}&redirect_uri=${redirect}&scope=${scope}&state=${state}&response_type=code`; 
 }
 

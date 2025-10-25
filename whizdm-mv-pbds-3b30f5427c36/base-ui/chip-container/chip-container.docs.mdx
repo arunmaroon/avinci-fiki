@@ -1,0 +1,54 @@
+---
+description: A ChipContainer component.
+---
+
+import { ChipContainer } from "./chip-container";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from "@mui/material";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ChipContainer>Hello world!</ChipContainer>
+```
+
+### Render chip container without error!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 480 }}>
+    <ChipContainer
+      title="Gender"
+      value="Male"
+      options={[
+        { label: "Male", value: "Male" },
+        { label: "Female", value: "Female" },
+        { label: "Other", value: "Other" },
+      ]}
+      onClick={() => {}}
+    />
+  </Box>
+</ThemeProvider>
+```
+
+### Render chip container with error!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 480 }}>
+    <ChipContainer
+      title="Gender"
+      value="Male"
+      options={[
+        { label: "Male", value: "Male" },
+        { label: "Female", value: "Female" },
+        { label: "Other", value: "Other" },
+      ]}
+      error="Please choose one of the following options"
+      onClick={() => {}}
+    />
+  </Box>
+</ThemeProvider>
+```

@@ -1,0 +1,51 @@
+---
+description: A Fileupload component.
+---
+
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from "@mui/material";
+import { IconNames } from "@mvloans/base-ui.common";
+import { Fileupload } from "./fileupload";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <Box sx={{ width: 480 }}>
+    <Fileupload
+      label={"Upload document"}
+      id={"upload2"}
+      status={"success"}
+      onAction={() => {}}
+      description={"Uploaded to error"}
+      leftIcon={{ type: "icon", url: "ic-pdf" }}
+      value="1"
+      rightIcon={{ actionType: "loading", icon: IconNames.fileUploadIcon }}
+      ></Fileupload>
+  </Box>
+</ThemeProvider>
+```
+
+### Render hello world!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 480 }}>
+    <Fileupload
+      label={"Upload document"}
+      id={"upload2"}
+      status={"success"}
+      value="1"
+      onAction={() => {}}
+      onCancelUpload={() => {}}
+      description={"Uploaded to error"}
+      // leftIcon={{ type: "icon", url: "ic-pdf" }}
+      // rightIcon={{ actionType: "loading",icon: IconNames.fileUploadIcon  }}
+      helperText={"Helper Text"}
+    >
+      </Fileupload>
+  </Box>
+</ThemeProvider>
+```

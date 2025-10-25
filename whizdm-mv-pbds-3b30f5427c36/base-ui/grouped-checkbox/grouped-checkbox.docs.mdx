@@ -1,0 +1,34 @@
+---
+description: A GroupCheckbox component.
+---
+
+import { GroupCheckbox } from "./grouped-checkbox";
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Box } from "@mui/material";
+
+A component that does something special and renders text in a div.
+
+### Component usage
+
+```js
+<GroupCheckbox>Hello world!</GroupCheckbox>
+```
+
+### Render chip container without error!
+
+```js live
+<ThemeProvider>
+  <Box sx={{ width: 480 }}>
+    <GroupCheckbox
+      title="Choose communication preferences"
+      value={"SMS"}
+      options={[
+        { label: "SMS", value: "SMS" },
+        { label: "Email", value: "Email" },
+        { label: "Whatsapp", value: "Whatsapp" },
+      ]}
+      onClick={() => {}}
+    />
+  </Box>
+</ThemeProvider>
+```

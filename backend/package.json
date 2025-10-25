@@ -17,9 +17,13 @@
   "license": "ISC",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.65.0",
+    "@builder.io/react": "^8.2.8",
+    "@builder.io/sdk": "^6.1.2",
+    "@builder.io/sdk-react": "^4.2.4",
     "@deepgram/sdk": "^3.4.0",
     "@langchain/openai": "^0.6.14",
     "@pinecone-database/pinecone": "^6.1.2",
+    "archiver": "^7.0.1",
     "axios": "^1.12.2",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^2.4.3",

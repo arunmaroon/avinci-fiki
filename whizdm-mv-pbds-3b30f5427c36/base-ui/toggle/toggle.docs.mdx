@@ -1,0 +1,28 @@
+import { ThemeProvider } from "@mvloans/base-ui.theme-provider";
+import { Toggle } from "./toggle";
+
+### Component usage
+
+```js
+<ThemeProvider>
+  <ThemeProvider>
+    <Toggle checked={checked} disabled onChange={() => setChecked(!checked)} />
+  </ThemeProvider>
+</ThemeProvider>
+```
+
+### Render on switch
+
+```js live
+<ThemeProvider>
+  <Toggle checked={true} />
+</ThemeProvider>
+```
+
+### Render off switch
+
+```js live
+<ThemeProvider>
+  <Toggle checked={false} />
+</ThemeProvider>
+```
